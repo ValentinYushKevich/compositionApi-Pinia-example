@@ -1,25 +1,29 @@
 <template>
   <div class="contaner">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <StockCard v-for="item in 3" :key="item" />
   </div>
 </template>
 
-<script>
-import HelloWorld from '@/components/HelloWorld.vue';
+<script setup>
+import StockCard from '@/components/StockCard.vue';
 
+</script>
+
+<script >
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld,
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 .contaner {
   width: 100%;
-  min-height: 100vh;
-  background-color: rgb(9, 65, 121);
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 </style>

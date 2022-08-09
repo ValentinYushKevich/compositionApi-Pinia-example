@@ -1,17 +1,24 @@
 <template>
-  <div class="contaner">
-    <StockCard v-for="item in 3" :key="item" />
+  <div class="contaner" v-if="stockStore.allStock">
+    <StockCard
+      v-for="company in stockStore.allStock"
+      :key="company.zip"
+      :company="company"
+    />
   </div>
 </template>
 
 <script setup>
+import { useStockStore } from '@/store/stock';
 import StockCard from '@/components/StockCard.vue';
 
+const stockStore = useStockStore();
+stockStore.getAllStock();
 </script>
 
-<script >
+<script>
 export default {
-  name: 'HomeView',
+  name: 'HomePage',
 };
 </script>
 

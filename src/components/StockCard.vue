@@ -1,13 +1,17 @@
 <template>
   <div class="card">
     <div class="card__cover">
-      <img class="card__image" alt="Vue logo" src="@/assets/logo.png" />
+      <img
+        class="card__image"
+        alt="Vue logo"
+        :src="company.image || '@/assets/logo.png'"
+      />
       <div class="card__title">
-        Apple Inc.
-        <span>AAPL</span>
+        {{ company.companyName }}
+        <span>{{ company.symbol }}</span>
       </div>
     </div>
-    <span class="card__price">130 $</span>
+    <span class="card__price">{{ company.price }} $</span>
   </div>
 </template>
 
@@ -15,7 +19,10 @@
 export default {
   name: 'StockCard',
   props: {
-    msg: String,
+    company: Object,
+  },
+  mounted() {
+    console.log('company', this.company);
   },
 };
 </script>

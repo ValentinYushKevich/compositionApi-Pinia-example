@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { defineStore } from 'pinia';
-import axios from 'axios';
+import { axios } from '@/services/axiosInstance';
 
 export const useStockStore = defineStore('stock', {
   state() {
@@ -8,12 +8,17 @@ export const useStockStore = defineStore('stock', {
       allStock: [],
     };
   },
+  getters: {
+    filteredStock() {
+      return this.allStock.filter((stock) => stock.symbol);
+    },
+  },
   actions: {
     async getAllStock() {
-      const response = await axios.get(
-        'https://financialmodelingprep.com/api/v3/profile/NVDA?apikey=31a44fedd8986038e864c7f6f577d871',
-      );
-      this.allStock = response.data;
+      // eslint-disable-next-line arrow-body-style
+      const response = await axios.get('/pricemultifull?fsyms=BTC,ETH&tsyms=USD,EUR');
+      console.log(response.data.RAW);
+      this.allStock = response.data.RAW;
     },
   },
 });

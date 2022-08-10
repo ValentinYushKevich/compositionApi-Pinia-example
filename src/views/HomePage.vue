@@ -1,8 +1,8 @@
 <template>
-  <div class="contaner" v-if="stockStore.allStock">
+  <div class="contaner" v-if="stockStore.filteredStock">
     <StockCard
-      v-for="company in stockStore.allStock"
-      :key="company.zip"
+      v-for="company in stockStore.filteredStock"
+      :key="company.symbol || Date.now()"
       :company="company"
     />
   </div>
@@ -14,6 +14,7 @@ import StockCard from '@/components/StockCard.vue';
 
 const stockStore = useStockStore();
 stockStore.getAllStock();
+
 </script>
 
 <script>
@@ -30,7 +31,7 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 </style>

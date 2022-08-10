@@ -10,15 +10,18 @@ export const useStockStore = defineStore('stock', {
   },
   getters: {
     filteredStock() {
-      return this.allStock.filter((stock) => stock.symbol);
+      return this.allStock.filter((stock) => stock.CoinInfo);
     },
   },
   actions: {
     async getAllStock() {
-      // eslint-disable-next-line arrow-body-style
-      const response = await axios.get('/pricemultifull?fsyms=BTC,ETH&tsyms=USD,EUR');
-      console.log(response.data.RAW);
-      this.allStock = response.data.RAW;
+      try {
+        const response = await axios.get('/top/totalvolfull?limit=10&tsym=USD');
+        console.log('response.data', response.data.Data);
+        this.allStock = response.data.Data;
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 });

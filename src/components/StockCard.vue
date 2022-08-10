@@ -4,14 +4,14 @@
       <img
         class="card__image"
         alt="Vue logo"
-        :src="company.image || '@/assets/logo.png'"
+        :src="company.CoinInfo.ImageUrl"
       />
       <div class="card__title">
-        {{ company.companyName }}
-        <span>{{ company.symbol }}</span>
+        {{ company.CoinInfo.FullName }}
+        <span>{{ company.CoinInfo.Internal }}</span>
       </div>
     </div>
-    <span class="card__price">{{ company.price }} $</span>
+    <span class="card__price">{{ company.DISPLAY.USD.HIGH24HOUR }} $</span>
   </div>
 </template>
 
@@ -39,6 +39,7 @@ export default {
 .card__cover {
   display: flex;
   align-items: center;
+  flex-grow: 1;
   img {
     width: 30px;
     margin-right: 20px;
@@ -47,6 +48,9 @@ export default {
 .card__title {
   font-size: 20px;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   span {
     display: block;
     font-size: 14px;

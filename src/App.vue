@@ -14,7 +14,7 @@
   text-align: center;
   color: #d7e0ea;
   background-color: rgb(9, 65, 121);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 </style>

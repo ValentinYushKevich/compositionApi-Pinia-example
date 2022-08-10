@@ -1,11 +1,7 @@
 <template>
   <div class="card">
     <div class="card__cover">
-      <img
-        class="card__image"
-        alt="Vue logo"
-        :src="company.CoinInfo.ImageUrl"
-      />
+      <img class="card__image" alt="Vue logo" :src="imgPath" />
       <div class="card__title">
         {{ company.CoinInfo.FullName }}
         <span>{{ company.CoinInfo.Internal }}</span>
@@ -15,15 +11,19 @@
   </div>
 </template>
 
+<script setup>
+import { computed, defineProps } from 'vue';
+
+const props = defineProps(['company']);
+
+const imgPath = computed(
+  () => `https://www.cryptocompare.com/${props.company.CoinInfo.ImageUrl}`,
+);
+</script>
+
 <script>
 export default {
   name: 'StockCard',
-  props: {
-    company: Object,
-  },
-  mounted() {
-    console.log('company', this.company);
-  },
 };
 </script>
 

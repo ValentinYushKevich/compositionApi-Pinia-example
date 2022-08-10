@@ -16,7 +16,7 @@ export const useStockStore = defineStore('stock', {
   actions: {
     async getAllStock() {
       try {
-        const response = await axios.get('/top/totalvolfull?limit=10&tsym=USD');
+        const response = await axios.get('/top/totalvolfull?limit=40&tsym=USD');
         console.log('response.data', response.data.Data);
         this.allStock = response.data.Data;
       } catch (e) {

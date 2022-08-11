@@ -1,24 +1,32 @@
 <template>
-  <div class="card">
+  <div class="card" @click="joinCoin" aria-hidden="true">
     <div class="card__cover">
       <img class="card__image" alt="Vue logo" :src="imgPath" />
       <div class="card__title">
-        {{ company.CoinInfo.FullName }}
-        <span>{{ company.CoinInfo.Internal }}</span>
+        {{ coin.CoinInfo.FullName }}
+        <span>{{ coin.CoinInfo.Internal }}</span>
       </div>
     </div>
-    <span class="card__price">{{ company.DISPLAY.USD.HIGH24HOUR }} $</span>
+    <span class="card__price">{{ coin.DISPLAY.USD.HIGH24HOUR }} $</span>
   </div>
 </template>
 
 <script setup>
 import { computed, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
 
-const props = defineProps(['company']);
+const props = defineProps({
+  coin: Object,
+});
 
 const imgPath = computed(
-  () => `https://www.cryptocompare.com/${props.company.CoinInfo.ImageUrl}`,
+  () => `https://www.cryptocompare.com/${props.coin.CoinInfo.ImageUrl}`,
 );
+const router = useRouter();
+
+function joinCoin() {
+  router.push(`/coin/${props.coin.CoinInfo.Name}`);
+}
 </script>
 
 <script>
@@ -35,6 +43,7 @@ export default {
   padding: 18px;
   border: 1px solid #ccc;
   border-radius: 15px;
+  cursor: pointer;
 }
 .card__cover {
   display: flex;

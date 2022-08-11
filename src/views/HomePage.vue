@@ -1,9 +1,9 @@
 <template>
   <div class="contaner" v-if="stockStore.filteredStock">
     <StockCard
-      v-for="company in stockStore.filteredStock"
-      :key="company.symbol || Date.now()"
-      :company="company"
+      v-for="coin in stockStore.filteredStock"
+      :key="coin.symbol || Date.now()"
+      :coin="coin"
     />
   </div>
 </template>

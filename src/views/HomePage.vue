@@ -2,19 +2,20 @@
   <div class="contaner" v-if="stockStore.filteredStock">
     <StockCard
       v-for="coin in stockStore.filteredStock"
-      :key="coin.symbol || Date.now()"
+      :key="coin.symbol"
       :coin="coin"
     />
   </div>
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import { useStockStore } from '@/store/stock';
 import StockCard from '@/components/StockCard.vue';
 
 const stockStore = useStockStore();
-stockStore.getAllStock();
 
+onMounted(() => stockStore.getAllStock());
 </script>
 
 <script>

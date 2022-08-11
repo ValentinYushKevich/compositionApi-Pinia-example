@@ -15,6 +15,7 @@
   color: #d7e0ea;
   background-color: rgb(9, 65, 121);
   min-height: 100vh;
+  padding-top: 20px;
 }
 
 </style>

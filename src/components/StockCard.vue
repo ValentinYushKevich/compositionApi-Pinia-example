@@ -1,7 +1,7 @@
 <template>
   <div class="card" @click="joinCoin" aria-hidden="true">
     <div class="card__cover">
-      <img class="card__image" alt="Vue logo" :src="imgPath" />
+      <img class="card__image" alt="Coin logo" :src="imgPath" />
       <div class="card__title">
         {{ coin.CoinInfo.FullName }}
         <span>{{ coin.CoinInfo.Internal }}</span>

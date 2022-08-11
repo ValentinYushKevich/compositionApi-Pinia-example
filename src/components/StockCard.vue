@@ -36,10 +36,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+ @import '@/assets/styles/mixins.scss';
+
 .card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include baseFlex;
   padding: 18px;
   border: 1px solid #ccc;
   border-radius: 15px;

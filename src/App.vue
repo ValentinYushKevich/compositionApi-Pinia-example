@@ -1,6 +1,12 @@
 <template>
+  <HeaderNavigation/>
   <router-view/>
 </template>
+
+<script setup>
+import HeaderNavigation from '@/components/HeaderNavigation.vue';
+
+</script>
 
 <style lang="scss">
 #app {
@@ -9,9 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #d7e0ea;
-  background-color: rgb(9, 65, 121);
+  background-color: rgb(8, 74, 139);
   min-height: 100vh;
-  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 </style>

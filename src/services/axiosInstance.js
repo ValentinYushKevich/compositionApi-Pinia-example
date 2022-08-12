@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const key = '57894e8c954bd97aec67f1bde7e9a48aff3eb121994346bfb6804cc4f45549fa';
 
-const baseURL = 'https://min-api.cryptocompare.com/data';
+const baseURL = process.env.VUE_APP_MAIN_URL;
+
 const instance = axios.create({
   baseURL,
   headers: {

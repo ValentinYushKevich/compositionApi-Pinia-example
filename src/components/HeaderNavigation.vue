@@ -1,15 +1,28 @@
 <template>
   <div class="header">
     <div class="header__badge">
-      <img src="~@/assets/icons/sticker-essentials.png" alt="Logo">
+      <img src="~@/assets/icons/sticker-essentials.png" alt="Logo" />
       CriptoParty
     </div>
-    <div class="selector">Selector</div>
+    <div class="lang__selector">
+      <label for="select"
+        >Выберите язык
+        <select :value="languageState.lang"
+        @change="languageState.changeLanguage($event.target.value)">
+          <option>ru</option>
+          <option>en</option>
+          <option disabled>sp</option>
+        </select>
+      </label>
+    </div>
   </div>
 </template>
 
 <script setup>
-console.log('head');
+import useLanguageStore from '@/store/lang';
+
+const languageState = useLanguageStore();
+
 </script>
 
 <style lang="scss" scoped>
@@ -32,6 +45,14 @@ console.log('head');
       height: 40px;
       margin-right: 20px;
     }
+  }
+}
+.lang__selector {
+  label {
+    margin-right: 20px;
+  }
+  select {
+    margin-left: 20px;
   }
 }
 </style>

@@ -6,7 +6,7 @@
     </div>
     <div class="lang__selector">
       <label for="select"
-        >Выберите язык
+        >{{ $t('message.selectLang')}}
         <select :value="languageState.lang"
         @change="languageState.changeLanguage($event.target.value)">
           <option>ru</option>

@@ -5,27 +5,30 @@
     </div>
     <div class="coin__descr">
       <h2 class="coin__title">
-        Символ {{ coinStore.coinDisplayInfo.FROMSYMBOL }}
+        {{ $t('message.symbol') }} {{ coinStore.coinDisplayInfo.FROMSYMBOL }}
       </h2>
       <div class="coin__marketplace">
-        Торговая площадка {{ coinStore.coinDisplayInfo.MARKET }}
+        {{ $t('message.tradePlace') }} <span>{{ coinStore.coinDisplayInfo.MARKET }}</span>
       </div>
-      <div class="coin__price">Цена {{ coinStore.coinDisplayInfo.PRICE }}</div>
+      <div class="coin__price">
+        {{ $t('message.price') }}
+        <span>{{ coinStore.coinDisplayInfo.PRICE }}</span>
+      </div>
       <div class="coin__change-hour">
-        Колебание цены час
+        {{ $t('message.reytperhour') }}
         <span :class="hourPriceClasses">{{
           toFixedNum(coinStore.coinRawInfo.CHANGEHOUR, 2)
         }}</span>
       </div>
       <div class="coin__change-day">
-        Колебание цены сутки
+        {{ $t('message.reytper24hour') }}
         <span :class="dayPriceClasses">
           {{ toFixedNum(coinStore.coinRawInfo.CHANGE24HOUR, 2) }}
         </span>
       </div>
     </div>
     <button type="button" class="returnButton" @click="returnBack">
-      Назад
+      {{ $t('message.back') }}
     </button>
   </div>
 </template>
@@ -74,7 +77,7 @@ function returnBack() {
   display: flex;
   align-items: center;
   position: relative;
-   padding-bottom: 40px;
+  padding-bottom: 40px;
 }
 .coin__descr {
   padding: 30px;
@@ -82,11 +85,20 @@ function returnBack() {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  min-width: 400px;
 }
 .coin__price,
 .coin__change-hour,
 .coin__change-day {
   margin-top: 20px;
+}
+.coin__marketplace,
+.coin__price,
+.coin__change-hour,
+.coin__change-day {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 .goodPrice {
   color: rgb(22, 214, 22);

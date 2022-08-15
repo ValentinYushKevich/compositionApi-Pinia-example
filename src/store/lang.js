@@ -12,6 +12,10 @@ const useLanguageStore = defineStore('language', {
       this.lang = lang;
       i18n.global.locale = lang;
     },
+    checkLanguage() {
+      const curLang = localStorage.getItem('lang');
+      if (curLang) this.lang = curLang;
+    },
   },
 });
 

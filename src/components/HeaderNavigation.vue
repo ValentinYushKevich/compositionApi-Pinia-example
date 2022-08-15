@@ -6,9 +6,11 @@
     </div>
     <div class="lang__selector">
       <label for="select"
-        >{{ $t('message.selectLang')}}
-        <select :value="languageState.lang"
-        @change="languageState.changeLanguage($event.target.value)">
+        >{{ $t('message.selectLang') }}
+        <select
+          :value="languageState.lang"
+          @change="changeLang($event.target.value)"
+        >
           <option>ru</option>
           <option>en</option>
           <option disabled>sp</option>
@@ -19,10 +21,19 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
 import useLanguageStore from '@/store/lang';
 
 const languageState = useLanguageStore();
 
+function changeLang(lang) {
+  languageState.changeLanguage(lang);
+  localStorage.setItem('lang', lang);
+}
+
+onMounted(() => {
+  languageState.checkLanguage();
+});
 </script>
 
 <style lang="scss" scoped>

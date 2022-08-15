@@ -1,24 +1,23 @@
 # composition-api-pinia-example
 
-## Project setup
-```
-npm install
-```
+Проект создан как репо для демонстарации вариантов реализации часто встречающихся в работе фич
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Стек: Vue 3(compositionApi, синтаксис script setup), Vue-Router, Pinia, Axios
 
-### Compiles and minifies for production
-```
-npm run build
-```
+В проекте реализовано применение:
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Vue-Router
+
+Pinia
+Созданы и подключены модули хранилища
+
+Переменные окружения .env
+
+Подключен и настроен экземпляр Axios
+
+Подключена интернационализация (i18n)
+
+Работа с локальным хранилищем (localStorage)
+
+Работа с миксинами scss

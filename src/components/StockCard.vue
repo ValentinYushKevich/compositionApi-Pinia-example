@@ -23,8 +23,6 @@ const props = defineProps({
   },
 });
 
-console.log(props.coin);
-
 const imgPath = computed(
   (): string => `https://www.cryptocompare.com/${props?.coin?.CoinInfo?.ImageUrl}`,
 );

@@ -43,6 +43,8 @@ const route = useRoute();
 const coinStore = useCoinStore();
 coinStore.getCoinInfo(route.params.coinId);
 
+console.log('coinStore', coinStore);
+
 const imgPath = computed(
   ():string => `https://www.cryptocompare.com/${coinStore.coinDisplayInfo.IMAGEURL}`,
 );

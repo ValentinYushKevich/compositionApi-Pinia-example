@@ -9,7 +9,7 @@
         >{{ $t('message.selectLang') }}
         <select
           :value="languageState.lang"
-          @change="changeLang($event.target.value)"
+          @change="changeLang($event)"
         >
           <option>ru</option>
           <option>en</option>
@@ -20,18 +20,18 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { onMounted } from 'vue';
 import useLanguageStore from '@/store/lang';
 
 const languageState = useLanguageStore();
 
-function changeLang(lang) {
-  languageState.changeLanguage(lang);
-  localStorage.setItem('lang', lang);
+function changeLang(lang: any):void {
+  languageState.changeLanguage(lang.target.value || 'ru');
+  localStorage.setItem('lang', lang.target.value || 'ru');
 }
 
-onMounted(() => {
+onMounted(():void => {
   languageState.checkLanguage();
 });
 </script>

@@ -3,40 +3,46 @@
     <div class="card__cover">
       <img class="card__image" alt="Coin logo" :src="imgPath" />
       <div class="card__title">
-        {{ coin.CoinInfo.FullName }}
-        <span>{{ coin.CoinInfo.Internal }}</span>
+        {{ coin?.CoinInfo.FullName }}
+        <span>{{ coin?.CoinInfo.Internal }}</span>
       </div>
     </div>
-    <span class="card__price">{{ coin.DISPLAY.USD.HIGH24HOUR }} $</span>
+    <span class="card__price">{{ coin?.DISPLAY?.USD?.HIGH24HOUR }} $</span>
   </div>
 </template>
 
-<script setup>
-import { computed, defineProps } from 'vue';
+<script lang="ts" setup>
+import { computed, defineProps, PropType } from 'vue';
 import { useRouter } from 'vue-router';
+import { Coin } from '@/types/coin';
 
 const props = defineProps({
-  coin: Object,
+  coin: {
+    required: true,
+    type: Object as PropType<Coin>,
+  },
 });
 
-const imgPath = computed(
-  () => `https://www.cryptocompare.com/${props.coin.CoinInfo.ImageUrl}`,
-);
-const router = useRouter();
+console.log(props.coin);
 
-function joinCoin() {
-  router.push(`/coin/${props.coin.CoinInfo.Name}`);
+const imgPath = computed(
+  (): string => `https://www.cryptocompare.com/${props?.coin?.CoinInfo?.ImageUrl}`,
+);
+
+const router = useRouter();
+function joinCoin(): void {
+  router.push(`/coin/${props?.coin?.CoinInfo?.Name}`);
 }
 </script>
 
-<script>
+<script lang="ts">
 export default {
   name: 'StockCard',
 };
 </script>
 
 <style scoped lang="scss">
- @import '@/assets/styles/mixins.scss';
+@import '@/assets/styles/mixins.scss';
 
 .card {
   @include baseFlex;
@@ -45,21 +51,25 @@ export default {
   border-radius: 15px;
   cursor: pointer;
 }
+
 .card__cover {
   display: flex;
   align-items: center;
   flex-grow: 1;
+
   img {
     width: 30px;
     margin-right: 20px;
   }
 }
+
 .card__title {
   font-size: 20px;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
   span {
     display: block;
     font-size: 14px;

@@ -3,7 +3,7 @@
   <router-view/>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import HeaderNavigation from '@/components/HeaderNavigation.vue';
 
 </script>

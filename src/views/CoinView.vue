@@ -37,21 +37,22 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useCoinStore } from '@/store/coin';
+import StyleObject from '@/types/styleObject';
 
 const route = useRoute();
 const coinStore = useCoinStore();
 coinStore.getCoinInfo(route.params.coinId);
 
 const imgPath = computed(
-  () => `https://www.cryptocompare.com/${coinStore.coinDisplayInfo.IMAGEURL}`,
+  ():string => `https://www.cryptocompare.com/${coinStore.coinDisplayInfo.IMAGEURL}`,
 );
 
-const hourPriceClasses = computed(() => ({
+const hourPriceClasses = computed((): StyleObject => ({
   goodPrice: coinStore.coinRawInfo.CHANGEHOUR > 0,
   badPrice: coinStore.coinRawInfo.CHANGEHOUR < 0,
 }));
 
-const dayPriceClasses = computed(() => ({
+const dayPriceClasses = computed((): StyleObject => ({
   goodPrice: coinStore.coinRawInfo.CHANGE24HOUR > 0,
   badPrice: coinStore.coinRawInfo.CHANGE24HOUR < 0,
 }));

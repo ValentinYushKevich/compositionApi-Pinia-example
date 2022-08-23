@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { defineStore } from 'pinia';
-import { axios } from '@/services/axiosInstance';
+import { axios } from '@/services/axiosInstance.ts';
 
 export const useStockStore = defineStore('stock', {
   state() {

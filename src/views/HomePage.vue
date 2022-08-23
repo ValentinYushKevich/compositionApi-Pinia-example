@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { onMounted } from 'vue';
 import { useStockStore } from '@/store/stock';
 import StockCard from '@/components/StockCard.vue';
@@ -18,7 +18,7 @@ const stockStore = useStockStore();
 onMounted(() => stockStore.getAllStock());
 </script>
 
-<script>
+<script lang="ts">
 export default {
   name: 'HomePage',
 };

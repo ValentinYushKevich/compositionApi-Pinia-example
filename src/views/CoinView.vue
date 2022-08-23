@@ -33,7 +33,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useCoinStore } from '@/store/coin';
@@ -56,14 +56,14 @@ const dayPriceClasses = computed(() => ({
   badPrice: coinStore.coinRawInfo.CHANGE24HOUR < 0,
 }));
 
-function toFixedNum(num, fixedParam) {
+function toFixedNum(num: number, fixedParam: number): number | string {
   if (num) return num.toFixed(fixedParam);
   return 0;
 }
 
 const router = useRouter();
 
-function returnBack() {
+function returnBack():void {
   router.push('/');
 }
 </script>

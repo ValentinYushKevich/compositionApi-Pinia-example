@@ -8,18 +8,21 @@
       </div>
     </div>
     <span class="card__price">{{ coin?.DISPLAY?.USD?.HIGH24HOUR }} $</span>
+    <HeartCoin :coin-id="coin.CoinInfo.Id" :check="coin.favorite"
+    @select-coin="selectCoin" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed, defineProps, PropType } from 'vue';
 import { useRouter } from 'vue-router';
-import { Coin } from '@/types/coin';
+import FavoriteCoin from '@/types/favoriteCoin';
+import HeartCoin from './HeartCoin.vue';
 
 const props = defineProps({
   coin: {
     required: true,
-    type: Object as PropType<Coin>,
+    type: Object as PropType<FavoriteCoin>,
   },
 });
 
@@ -30,6 +33,10 @@ const imgPath = computed(
 const router = useRouter();
 function joinCoin(): void {
   router.push(`/coin/${props?.coin?.CoinInfo?.Name}`);
+}
+
+function selectCoin(coinId: string) {
+  console.log(coinId);
 }
 </script>
 
@@ -48,6 +55,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 15px;
   cursor: pointer;
+  position: relative;
 }
 
 .card__cover {

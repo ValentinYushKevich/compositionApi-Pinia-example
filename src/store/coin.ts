@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { defineStore } from 'pinia';
 import { axios } from '@/services/axiosInstance';
-import { SingleCoin, Usd } from '@/types/singleCoin';
+import { SingleCoin } from '@/types/singleCoin';
+import { Coin } from '@/types/coin';
 
 export const useCoinStore = defineStore('coin', {
   state() {
